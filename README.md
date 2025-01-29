@@ -39,11 +39,11 @@ La suite de ce README vous permettra d'avoir une vision d'ensemble des capacité
 Une excellente documentation pour l'apprentissage du langage est disponible à l'adresse suivante : [https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 
 
-### Typage
+## Notion de typage
 
 TypeScript propose plusieurs [types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html), qui sont similaires à ceux de JavaScript, mais avec des fonctionnalités supplémentaires.
 
-#### Types de base
+### Types de base
 
 Voici une liste des types de base utilisables :
 - string
@@ -66,7 +66,7 @@ const myString = "hello"
 let total = 0
 ```
 
-### Fonctions
+### Fonction : types des paramètres et type de retour
 
 En TypeScript, nous définissons les types des paramètres et le type de retour d'une fonction, par exemple :
 ```ts
@@ -97,7 +97,7 @@ function greet(name?: string): string {
 > [!NOTE]
 > Dans le cas d'un paramètre manquant la variable prend la valeur `undefined`
 
-#### Alias de types et types union
+### Alias de types et types union
 
 
 Parfois, il est utile d'avoir un **autre nom** pour un type. Nous pouvons utiliser un **alias de type** pour cela, par exemple :
@@ -134,7 +134,7 @@ function log(value: MyStringOrNumber): void {
 }
 ```
 
-#### Tableaux
+### Tableaux
 
 Lorsque nous identifions le type d'un tableau, nous devons savoir quel type de contenu le tableau aura, par exemple le tableau suivant sera **inféré** comme `number[]`:
 ```ts
@@ -155,7 +155,7 @@ function sum(array: number[]): number {
 }
 ```
 
-#### Tuples
+### Tuples
 
 Les tuples sont des tableaux de **longueur fixe**, exemple :
 ```ts
@@ -163,7 +163,7 @@ const myTuple: [string, number] = ["hello", 1]
 const myOtherTuple: [string, number, boolean] = ["hello", 1, true]
 ```
 
-#### Assertions de type
+### Assertions de type
 
 Les **assertions de type** sont un moyen d'aider TypeScript à déduire le type d'une variable.
 
@@ -192,7 +192,7 @@ nums.push(1)
 nums.push("hello")            // erreur car "hello" n'est pas un nombre
 ```
 
-#### Objets / Interfaces
+### Objets et interfaces
 
 Il est possible de définir la **structure d'un type objet** (aussi nommé JSon, qui est un tableau associatif) en utilisant une `Interface`, par exemple :
 
@@ -203,7 +203,7 @@ interface Person {
   age: number
 }
 
-const mike = {
+const person1 = {
   name: 'Michael',
   age: 35,
 }
@@ -224,11 +224,11 @@ interface Person {
 }
 
 // il est donc possible de créer une variable cille suit
-const mike = {
+const person1 = {
   name: 'Michael',
 }
 
-const debbie = {
+const person2 = {
   name: 'Deborah',
   age: 32,
 }
@@ -239,18 +239,18 @@ const debbie = {
 > Les propriétés obligatoires permettent de détecter les erreurs tôt et rendent notre code plus sûr (c'est la raison pour laquelle TypeScript est utilisé).
 > Évitez donc de rendre des clés optionnelles à moins que vous n'ayez une raison spécifique.
 
-#### Records
+### Records
 
 Parfois, nous avons des structures de données qui sont des paires clé-valeur, mais nous ne savons pas quelles clés spécifiques elles auront (bien que nous connaissons le type des valeurs).
 
 Pour cela, nous pouvons utiliser un type `Record`, qui est une description de paires clé-valeur, par exemple :
 
 ```ts
-let bowlingScores = {
-  Michael: 10,
-  Deborah: 20,
-  James: 30,
-  Ellie: 96,
+let usersAge = {
+  Bob: 10,
+  Laura: 20,
+  Ada: 30,
+  Charles: 96,
 }
 ```
 
@@ -258,20 +258,21 @@ aurait le type Record<string, number> car les clés sont des chaînes et les val
 
 Ou pour un exemple plus large 
 ```ts
+// interface définissant un chiot
 interface Puppy {
-  id: number
-  name: string
-  breed: string
-  img?: string
+  id: number // identifiant du chiot
+  name: string // nom du chiot
+  breed: string // race du chiot
+  img?: string // photo (optionnel)
 }
 
 let pups: Record<string, Puppy[]>
 
 pups = {
-  Deborah: [
+  Tedddy: [
     {
       id: 1,
-      name: 'Bruno',
+      name: 'Teddy',
       breed: 'Labrador',
     },
     {
@@ -280,11 +281,11 @@ pups = {
       breed: 'Golden Retriever',
     },
   ],
-  Michael: [
+  Ada: [
     {
       id: 2,
       name: 'Lola',
-      breed: 'Poodle',
+      breed: 'Bulldog',
     },
   ],
 }
