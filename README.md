@@ -94,7 +94,7 @@ function greet(name?: string): string {
 }
 ```
 
-> [!INFO]
+> [!NOTE]
 > Dans le cas d'un paramètre manquant la variable prend la valeur `undefined`
 
 #### Alias de types et types union
