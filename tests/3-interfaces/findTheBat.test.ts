@@ -6,6 +6,7 @@ const contacts = [
   { id: 2, name: 'Batman', address: 'Wayne Manor' },
   { id: 3, name: 'Minnie Mouse', address: 'Disneyland' },
   { id: 4, name: 'Kermit the Frog', address: 'Sesame St or the Swamp' },
+  { id: 4, name: 'Birdperson', address: 'Adult Swim Av.' },
 ]
 
 describe('findTheBat', () => {

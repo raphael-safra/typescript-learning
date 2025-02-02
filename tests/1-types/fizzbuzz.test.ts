@@ -2,19 +2,19 @@ import { describe, it, expect } from 'vitest'
 import { fizzbuzz } from '../../functions/1-types'
 
 describe('fizzbuzz (UNION RETURN TYPE)', () => {
-  it('returns a string when the parameter is divisible by 3 and/or 5', () => {
+  it('retourne une chaîne de caractères lorsque le paramètres est divisible par 3 et/ou 5', () => {
     expect(typeof fizzbuzz(3)).toBe('string')
     expect(typeof fizzbuzz(5)).toBe('string')
     expect(typeof fizzbuzz(15)).toBe('string')
   })
 
-  it('returns a number when the parameter is not divisible by 3 and/or 5', () => {
+  it('retourne un nombre lorsque le paramètres n\'est pas divisible par 3 et/ou 5', () => {
     expect(typeof fizzbuzz(1)).toBe('number')
     expect(typeof fizzbuzz(2)).toBe('number')
     expect(typeof fizzbuzz(4)).toBe('number')
   })
 
-  it('returns the appropriate fizz/buzz response, or original number', () => {
+  it('retourne la réponse correcte ou le nombre originel', () => {
     expect(fizzbuzz(1)).toBe(1)
     expect(fizzbuzz(2)).toBe(2)
     expect(fizzbuzz(3)).toBe('fizz')

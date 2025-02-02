@@ -5,24 +5,32 @@
  * Fonction qui prend en paramètre une chaîne de caractère correspondant à un nom et qui retourne une chaîne saluant l'utilisateur.
  * 
  * Exemple : nom passé en paramètre -> "Bob"
- * 
  * Retour attendu : "Hello Bob"
+ * 
+ * @param name Le nom à utiliser
  */
-export function getGreeting(name: string) {
+export function getGreeting(name: string): string {
   return `Hello ${name}`
 }
 
-// getFullName should return a string containing the contents
-// of `firstName` and the contents of `lastName`
-export function getFullName(firstName: string, lastName: string) {
+/**
+* Fonction qui concatène plusieurs nom pour obtenir le nom complet.
+ * 
+ * Exemple :
+ * getFullName("Ada", "Lovelace") doit retourner "Ada Lovelace"
+ * 
+ * @param firstName Prénom
+ * @param lastName Nom
+ * @returns Le nom complet
+ */
+export function getFullName(firstName: string, lastName: string): string {
   return `${firstName} ${lastName}`
 }
 
 /**
  * Fonction qui retourne la somme de deux nombres.
- * 
  */
-export function addNumbers(a: number, b: number) {
+export function addNumbers(a: number, b: number): number {
   return a + b
 }
 
@@ -34,8 +42,12 @@ export function addNumbers(a: number, b: number) {
  * Les deux premiers nombres sont obligatoires et le dernier optionnel.
  * 
  * Plus d'informations sur les paramètres optionnels : https://www.typescripttutorial.net/typescript-tutorial/typescript-optional-parameters/
+ *  
+ * @param a 1er nomnre, obligatoire
+ * @param b 2ème nombre, obligatoire
+ * @param c 3ème nombre, optionnel
  */
-export function sumNumbers(a: number, b: number, c?: number) {
+export function sumNumbers(a: number, b: number, c?: number): number {
   if (c) {
     return a + b + c
   } else {
@@ -44,13 +56,20 @@ export function sumNumbers(a: number, b: number, c?: number) {
 }
 
 /**
- * Retourne une chaîne de caractères de salutations d'un utilisa 
+* Retourne une chaîne de caractères correspondant au nom complet de l'utilisateur.
+ * 
+ * Exemple :
+ * greetFullName("Ada", "Lovelace", "Augusta") doit retourner "Hello Ada Augusta Lovelace"
+ *  
+ * @param firstName Prénom
+ * @param lastName Nom
+ * @param middleName "middle name"
  */
 export function greetFullName(
   firstName: string,
   lastName: string,
   middleName?: string
-) {
+): string {
   if (middleName) {
     return `Hello ${firstName} ${middleName} ${lastName}`
   } else {
@@ -60,11 +79,12 @@ export function greetFullName(
 
 // ----------- UNIONS -----------
 
-// addNumbersAndStrings accepts two arguments that can be either a number or a number inside a string
-// the sum of the two arguments should be returned as a number regardless of their original type
-
 /**
+ * Additionne les valeurs de deux paramètres qui peuvent être des nombre OU des chaînes de caractères
  * 
+ * Dans le cas de chaîne de caractère il faudra les transformer en nombre.
+ * 
+ * Pour vérifier le type d'une variable il est possible d'utiliser "typeof" comme présenté par la réponse stackoverflow suivante : https://stackoverflow.com/a/35546468
  * 
  * Documentation : https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html
  */
@@ -76,13 +96,32 @@ export function addNumbersOrStrings(a: string | number, b: string | number) {
   }
 }
 
-// fizzbuzz accepts a number and returns a string or number
-// if the number is divisible by 3, return 'fizz'
-// if the number is divisible by 5, return 'buzz'
-// if the number is divisible by 3 and 5, return 'fizzbuzz'
-// otherwise, return the original number
-export function fizzbuzz(a: number): string | number {
+/** Alias pouvant être utilisé pour la fonction "addNumbersOrStringsAlias" */
+type StringOrNumber = string | number
 
+/**
+ * Reprenez la fonction fonction précédente pour utiliser un alias en tant que type des paramètres.
+ */
+export function addNumbersOrStringsAlias(a: string | number, b: string | number) : number{
+  if (typeof a === 'string' || typeof b === 'string') {
+    return Number(a) + Number(b)
+  } else {
+    return a + b
+  }
+}
+
+/**
+ * Fonction fizzbuzz qui prend un nombre en paramètre.
+ * 
+ * Si le nombre en paramètre est divisible par 3, retourne "fizz"
+ * Si le nombre en paramètre est divisible par 5, retourne "buzz"
+ * Si le nombre en paramètre est divisible par 3 ET 5, retourne "fizzbuzz"
+ * Si aucune des condition n'est atteinte, retourne le nombre original (et pas une chaîne de caractères)
+ *  
+ * @param a La valeur sur laquelle fizzbuzz va se baser.
+ * @returns Résultat attendu
+ */
+export function fizzbuzz(a: number): string | number {
   if (a % 3 === 0 && a % 5 === 0) {
     return "fizzbuzz"
   }
@@ -96,35 +135,3 @@ export function fizzbuzz(a: number): string | number {
     return a
   }
 }
-
-// ----------- TYPE ALIASES -----------
-
-type StringOrNumber = string | number
-
-// sumMatchingType accepts two arguments that can be either a number or a string
-// if both arguments are numbers, the sum of the two arguments should be returned as a number
-// if either argument is a string, the two arguments should be summed together and returned as a string
-export function sumMatchingType(a: StringOrNumber, b: StringOrNumber){
-  
-  if ((typeof a === 'number' && typeof b === 'string') || (typeof a === 'string' && typeof b === 'number')) {
-    const aToNum = typeof a === 'string' ? parseInt(a) : a 
-    const bToNum = typeof b === 'string' ? parseInt(b) : b
-    const addNums = aToNum + bToNum
-    return addNums.toString()
-  }
-  else if (typeof a === 'number' && typeof b === 'number') {
-    return a + b
-  }
-  else if (typeof a === 'string' && typeof b === 'string') {
-    const add = parseInt(a) + parseInt(b)
-    return add.toString()
-  }
-  else {
-    return 0
-  }
-}
-
-// getNextTrafficLightColour accepts the current colour of a traffic light colour and returns the next colour
-// the light sequence is green -> yellow -> red -> green -> yellow -> (etc)
-// Remember to use a type alias!
-export function getNextTrafficLightColour(): void {}

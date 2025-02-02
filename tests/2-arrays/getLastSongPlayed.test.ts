@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest'
 import { getLastSongPlayed } from '../../functions/2-arrays'
 
 describe('getLastSongPlayed', () => {
-  it('returns a string', () => {
+  it('retourne une chaîne de caractères', () => {
     expect(typeof getLastSongPlayed(['song1', 'song2', 'song3'])).toBe('string')
   })
 
-  it('returns the last item in the array', () => {
+  it('retourne le dernier élément du tableau', () => {
     const songs = [
       'Flowers by Miley Cyrus',
       'Resolution by Matt Corby',

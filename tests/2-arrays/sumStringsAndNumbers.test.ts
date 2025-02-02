@@ -2,11 +2,11 @@ import { describe, it, expect } from 'vitest'
 import { sumStringsAndNumbers } from '../../functions/2-arrays'
 
 describe('sumStringsAndNumbers (UNION)', () => {
-  it('returns a number', () => {
+  it('retourne un nombre', () => {
     expect(typeof sumStringsAndNumbers(['2', 1, '43', 2])).toBe('number')
   })
 
-  it('returns the sum of all numbers in the array', () => {
+  it('retourne la somme de tous les nombres du tableau', () => {
     const arr = ['2', 1, '43', 2]
     expect(sumStringsAndNumbers(arr)).toBe(48)
 

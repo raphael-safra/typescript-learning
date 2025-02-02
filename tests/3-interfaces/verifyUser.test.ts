@@ -8,12 +8,12 @@ describe('verifyUser', () => {
   }
   const actual = verifyUser(user, 'amy@hello.com')
 
-  it('returns a (new) object', () => {
+  it('retourne un nouvel objet', () => {
     expect(typeof actual).toBe('object')
     expect(actual).not.toBe(user)
   })
 
-  it('returns an object with the correct properties', () => {
+  it('retourne un objet avec les propriétés attendues', () => {
     expect(actual.name).toBe('Amy')
     expect(actual.verified).toBe(true)
     expect(actual.email).toBe('amy@hello.com')

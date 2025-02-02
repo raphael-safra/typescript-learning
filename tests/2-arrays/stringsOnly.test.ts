@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { stringsOnly } from '../../functions/2-arrays'
 
 describe('stringsOnly (UNION)', () => {
-  it('returns a new array', () => {
+  it('retourne un nouveau tableau', () => {
     const arr = ['hello', null, 'world']
     const actual = stringsOnly(arr)
 
@@ -10,7 +10,7 @@ describe('stringsOnly (UNION)', () => {
     expect(actual).not.toBe(arr)
   })
 
-  it('returns an array with no empty spots', () => {
+  it('retourne un tableau sans les éléments "null"', () => {
     const arr = ['hello', null, 'world']
     const actual = stringsOnly(arr)
 

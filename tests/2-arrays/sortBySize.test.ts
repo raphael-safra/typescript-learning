@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { sortBySize } from '../../functions/2-arrays'
 
 describe('sortBySize', () => {
-  it('returns a new array of the same length (not the original)', () => {
+  it('retourne un tableau de la même taille (ATTENTION, ceci doit être un nouveau tableau)', () => {
     const arr = ['hello', 'world']
     const actual = sortBySize(arr)
 
@@ -12,7 +12,7 @@ describe('sortBySize', () => {
     expect(actual).not.toBe(arr)
   })
 
-  it('returns the strings in the correct order', () => {
+  it('retourne les string dans l\'ordre attendu', () => {
     const words = [
       'bumbling',
       'semiprecious',
