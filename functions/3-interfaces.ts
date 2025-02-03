@@ -7,25 +7,24 @@
  * - address
  */
 interface Contact {
-    id: number,
-    name: string,
-    address: string
 }
 
 /**
  * Renvoie l'adresse d'un contact.
+ * 
+ * @param contact Le contact à traiter
+ * @returns l'adress du contact
  */
-export function getAddress(contact: Contact): string {
-    return contact.address;
+export function getAddress(): void {
 }
 
 /**
  * Renvoie le nombre d'amis d'une liste de contacts
+ * 
  * @param friends La liste de contact concernée
  * @returns Le nombre d'amis
  */
-export function howManyFriends(friends: Contact[]): number {
-    return friends.length;
+export function howManyFriends(): void {
 }
 
 /**
@@ -35,14 +34,7 @@ export function howManyFriends(friends: Contact[]): number {
  * @param contacts Tableau de contacts à traiter 
  * @returns Une adresse ou "null"
  */
-export function findTheBat(contacts: Contact[]): string | null {
-
-    let contact = contacts.find((e) => e.name === "Batman");
-    if (contact !== undefined) {
-        return contact.address;
-    } else {
-        return null;
-    }
+export function findTheBat(): void {
 }
 
 // ----------- CLEF OPTIONNELLES -----------
@@ -50,29 +42,25 @@ export function findTheBat(contacts: Contact[]): string | null {
 /**
  * TODO définir l'interface qui représente un utilisateur.
  * 
+ * Documentation : https://www.typescriptlang.org/docs/handbook/interfaces.html#optional-properties
+ * 
  * Informations :
  * - name (obligatoire)
+ * - verified : indique si le compte utilisateur a été vérifié, booléen. Obligatoire et par défaut à "false" (obligatoire)
  * - address (optionnel)
- * - verified : indique si le compte utilisateur a été vérifié, booléen. Obligatoire et par défaut à "false"
+ * - picture : url vers une image (optionnel)
+ * - email : email de l'utilisateur (optionnel)
  */
 interface User {
-    name: string,
-    verified: boolean,
-    address?: string,
-    picture?: string,
-    email?: string
 }
 
 /**
  * Crée un objet "User" nom vérifié à partir d'un nom.
+ * 
  * @param name Le nom de l'utilisateur
  * @returns Nouvel objet "User"
  */
-export function generateNewUser(name: string): User {
-    return {
-        name: name,
-        verified: false
-    }
+export function generateNewUser(): void {
 }
 
 /**
@@ -90,9 +78,7 @@ export function generateNewUser(name: string): User {
  * @param email Nouvel email en chaîne de caractères
  * @returns Nouvel objet "User" avec les informations à jour
  */
-export function verifyUser(user: User, email: string): User {
-    const newUser = {...user, email, verified: true};
-    return newUser;
+export function verifyUser(): void {
 }
 
 
@@ -103,8 +89,7 @@ export function verifyUser(user: User, email: string): User {
  * @param pictureUrl L'URL vers la photo de l'utilisateur
  * @returns Nouvel objet "User" avec les informations à jour
  */
-export function updateUserPhoto(user: User, pictureUrl: string): User {
-    return {...user, picture: pictureUrl };
+export function updateUserPhoto(): void {
 }
 
 
@@ -116,12 +101,7 @@ export function updateUserPhoto(user: User, pictureUrl: string): User {
  * @param user L'objet "User" concerné par l'opération
  * @returns La chaîne de caractères attendue
  */
-export function getUserPhoto(user: User): string {
-    if (!("picture" in user) || user.picture === undefined) {
-        return "https://place.dog/300/200";
-    } else {
-        return user.picture;
-    }
+export function getUserPhoto(): void {
 }
 
 /**
@@ -136,12 +116,5 @@ export function getUserPhoto(user: User): string {
  * @param users Le Json comprenant plusieurs objets "User"
  * @returns L'objet "User" retrouvé ou "null" si aucun utilisateur associé à la clef
  */
-export function getUser(id: number, users: object): User | null {
-
-    for (const [key, value] of Object.entries(users)) {
-        if (key === id.toString()) {
-            return value;
-        }
-    }
-    return null;
+export function getUser(): void {
 }
