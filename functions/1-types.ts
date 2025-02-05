@@ -9,7 +9,9 @@
  * 
  * @param name Le nom à utiliser
  */
-export function getGreeting(): void {
+export function getGreeting(name:string): string {
+    const hello  = `Hello ${name}` ;
+    return hello;
 }
 
 /**
@@ -22,13 +24,15 @@ export function getGreeting(): void {
  * @param lastName Nom
  * @returns Le nom complet
  */
-export function getFullName(): void {
+export function getFullName(firstName : string,lastName : string): string {
+    return   `${firstName} ${lastName}` ;
 }
 
 /**
  * Fonction qui retourne la somme de deux nombres.
  */
-export function addNumbers(): void {
+export function addNumbers(a:number , b:number): number {
+    return a + b ;
 }
 
 // ----------- PARAMETRES OPTIONNELS -----------
@@ -44,7 +48,8 @@ export function addNumbers(): void {
  * @param b 2ème nombre, obligatoire
  * @param c 3ème nombre, optionnel
  */
-export function sumNumbers(): void {
+export function sumNumbers(a: number , b: number , c?: number): number {
+    return c? a+b+c : a+b;
 }
 
 /**
@@ -57,8 +62,8 @@ export function sumNumbers(): void {
  * @param lastName Nom
  * @param middleName "middle name" (optionnel)
  */
-export function greetFullName(): void {
-
+export function greetFullName(firstName : string , lastName : string , middleName?: string): string {
+return middleName? `Hello ${firstName} ${middleName} ${lastName}`:`Hello ${firstName} ${lastName}`
 }
 
 // ----------- UNIONS -----------
@@ -72,7 +77,12 @@ export function greetFullName(): void {
  * 
  * Documentation : https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html
  */
-export function addNumbersOrStrings(): void {
+export function addNumbersOrStrings(a: any , b : any): any {
+    if ( typeof a === "string" || typeof b === "string"){
+        return parseInt(a) + parseInt(b)
+    }else{
+        return a+b
+    }
 }
 
 /** Alias pouvant être utilisé pour la fonction "addNumbersOrStringsAlias" */
@@ -81,7 +91,12 @@ type StringOrNumber = string | number
 /**
  * Reprenez la fonction fonction précédente et utilisez un alias en tant que type des paramètres.
  */
-export function addNumbersOrStringsAlias() : void {
+export function addNumbersOrStringsAlias(a: StringOrNumber , b : StringOrNumber) : StringOrNumber {
+    if ( typeof a === "string" || typeof b === "string"){
+        return Number(a) + Number(b)
+    }else{
+        return a+b
+    }
 }
 
 /**
@@ -95,5 +110,14 @@ export function addNumbersOrStringsAlias() : void {
  * @param a La valeur sur laquelle fizzbuzz va se baser.
  * @returns Le résultat attendu
  */
-export function fizzbuzz(): void {
+export function fizzbuzz(a: number): any {
+    if(a%3 === 0 && a%5 !==0 ){
+        return "fizz"
+    } if(a%5 === 0 && a%3 !== 0){
+        return "buzz"
+    } if(a%3 === 0 && a%5 === 0){
+        return "fizzbuzz"
+    }else {
+        return a
+    }
 }
